@@ -1,42 +1,39 @@
 
-# Rapport
+# Assignment 3
 
-**Skriv din rapport här!**
+**Widgets**
 
-_Du kan ta bort all text som finns sedan tidigare_.
-
-## Följande grundsyn gäller dugga-svar:
-
-- Ett kortfattat svar är att föredra. Svar som är längre än en sida text (skärmdumpar och programkod exkluderat) är onödigt långt.
-- Svaret skall ha minst en snutt programkod.
-- Svaret skall inkludera en kort övergripande förklarande text som redogör för vad respektive snutt programkod gör eller som svarar på annan teorifråga.
-- Svaret skall ha minst en skärmdump. Skärmdumpar skall illustrera exekvering av relevant programkod. Eventuell text i skärmdumpar måste vara läsbar.
-- I de fall detta efterfrågas, dela upp delar av ditt svar i för- och nackdelar. Dina för- respektive nackdelar skall vara i form av punktlistor med kortare stycken (3-4 meningar).
-
-Programkod ska se ut som exemplet nedan. Koden måste vara korrekt indenterad då den blir lättare att läsa vilket gör det lättare att hitta syntaktiska fel.
-
+- Det första som gjordes var att flytta på den redan existerande texten till en mer passande position.
+- Därefter lades en knapp till med målet att kunna ändra på texten varje gång denna klickas på. 
+- Jag genomförde ovan genom att första hitta knappen och texten via 'findViewById', därefter lades en onclicklistener till på knappen:
 ```
-function errorCallback(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            // Geolocation API stöds inte, gör något
-            break;
-        case error.POSITION_UNAVAILABLE:
-            // Misslyckat positionsanrop, gör något
-            break;
-        case error.UNKNOWN_ERROR:
-            // Okänt fel, gör något
-            break;
+Button button = findViewById(R.id.button);
+final TextView text = findViewById(R.id.text);
+button.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        ButtonPushedTimes++;
+        text.setText("Button pressed: " + ButtonPushedTimes + " times");
     }
-}
+});
+```
+- Varpå knappen klickas på körs koden: "ButtonPushedTimes++;" samt "text.setText" vilket ökar räknaren och därefter visar resultatet av detta i textViewn. Detta kan se ut såhär:
+![](image_button_counter.png)
+- Därpå lades en switch samt en bild till i Layouten. med målet att kunna dölja bilden när man justerar switchen. 
+- För att uppnå detta sattes bilden till en source genom följande kod: ```imgview.setImageResource(R.drawable.android_logo);```
+- För att sedan kunna dölja bilden genom switchen sattes en listener på switchen. För att sedan Dölja/visa kollar jag om dens nuvarande status och sätter den till motsatt status varje gång knappen skickar ett event genom koden nedan.
+```
+sw1.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        if (imgview.getVisibility() == View.VISIBLE) {
+            imgview.setVisibility(View.INVISIBLE);
+        } else {
+            imgview.setVisibility(View.VISIBLE);
+        }
+    }
+});
 ```
 
-Bilder läggs i samma mapp som markdown-filen.
-
-![](android.png)
-
-Läs gärna:
-
-- Boulos, M.N.K., Warren, J., Gong, J. & Yue, P. (2010) Web GIS in practice VIII: HTML5 and the canvas element for interactive online mapping. International journal of health geographics 9, 14. Shin, Y. &
-- Wunsche, B.C. (2013) A smartphone-based golf simulation exercise game for supporting arthritis patients. 2013 28th International Conference of Image and Vision Computing New Zealand (IVCNZ), IEEE, pp. 459–464.
-- Wohlin, C., Runeson, P., Höst, M., Ohlsson, M.C., Regnell, B., Wesslén, A. (2012) Experimentation in Software Engineering, Berlin, Heidelberg: Springer Berlin Heidelberg.
+**Såhär ser slutresultatet ut:**
+![](image_resultat.png)

@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
         sw1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println(imgview.getVisibility());
                 if (imgview.getVisibility() == View.VISIBLE) {
                     imgview.setVisibility(View.INVISIBLE);
                 } else {

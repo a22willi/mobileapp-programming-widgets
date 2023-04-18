@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,5 +27,8 @@ public class MainActivity extends AppCompatActivity {
                 text.setText("Button pressed: " + ButtonPushedTimes + " times");
             }
         });
+
+        ImageView imgview = findViewById(R.id.imageView);
+        imgview.setImageResource(R.drawable.android_logo);
     }
 }

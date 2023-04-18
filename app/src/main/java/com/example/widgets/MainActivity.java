@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,7 +29,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ImageView imgview = findViewById(R.id.imageView);
+        final ImageView imgview = findViewById(R.id.imageView);
         imgview.setImageResource(R.drawable.android_logo);
+        Switch sw1 = findViewById(R.id.switch1);
+        sw1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.out.println(imgview.getVisibility());
+                if (imgview.getVisibility() == View.VISIBLE) {
+                    imgview.setVisibility(View.INVISIBLE);
+                } else {
+                    imgview.setVisibility(View.VISIBLE);
+                }
+            }
+        });
     }
 }
